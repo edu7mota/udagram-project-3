@@ -13,11 +13,6 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - restore_cache:
-          # See the configuration reference documentation for more details on using restore_cache and save_cache steps
-          # https://circleci.com/docs/2.0/configuration-reference/?section=reference#save_cache
-          keys:
-            - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
       - run:
           name: Install `docker-compose`
           command: |
@@ -35,15 +30,7 @@ jobs:
       - run:
           name: Push to Docker Hub
           command: |
-            docker tag reverseproxy:v1 edu7mota/reverseproxy
-      - run:
-          name: Push to Docker Hub
-          command: |
             docker push edu7mota/reverseproxy
-      - run:
-          name: Push to Docker Hub
-          command: |
-            docker tag udagram-api-user:v1 edu7mota/udagram-api-user
       - run:
           name: Push to Docker Hub
           command: |
@@ -51,15 +38,7 @@ jobs:
       - run:
           name: Push to Docker Hub
           command: |
-            docker tag udagram-api-feed:v1 edu7mota/udagram-api-feed
-      - run:
-          name: Push to Docker Hub
-          command: |
             docker push edu7mota/udagram-api-feed
-      - run:
-          name: Push to Docker Hub
-          command: |
-            docker tag udagram-frontend:v1 edu7mota/udagram-frontend
       - run:
           name: Push to Docker Hub
           command: |
