@@ -35,7 +35,35 @@ jobs:
       - run:
           name: Push to Docker Hub
           command: |
-            docker-compose push
+            docker tag reverseproxy:v1 edu7mota/reverseproxy
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker push edu7mota/reverseproxy
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker tag udagram-api-user:v1 edu7mota/udagram-api-user
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker push edu7mota/udagram-api-user
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker tag udagram-api-feed:v1 edu7mota/udagram-api-feed
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker push edu7mota/udagram-api-feed
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker tag udagram-frontend:v1 edu7mota/udagram-frontend
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker push edu7mota/udagram-frontend
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
